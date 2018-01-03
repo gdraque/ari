@@ -42,6 +42,7 @@ type OriginateParams struct {
 	AppArgs        string            `json:"appArgs,omitempty"`
 	CallerID       string            `json:"callerId,omitempty"`
 	Timeout        int64             `json:"timeout,omitempty"`
+	Formats	       string            `json:"formats,omitempty"`
 	ChannelID      string            `json:"channelId,omitempty"`
 	OtherChannelID string            `json:"otherChannelId,omitempty"`
 	Variables      map[string]string `json:"variables,omitempty"`
