@@ -165,6 +165,26 @@ type PeerStatusChange struct {
 	Peer     *Peer     `json:"peer"`
 }
 
+type RecordingFailed struct {
+        Event
+        Recording *LiveRecording `json:"recording"`
+}
+
+type RecordingFinished struct {
+        Event
+	Recording *LiveRecording `json:"recording"`
+}
+
+type RecordingStarted struct {
+        Event
+	Recording *LiveRecording `json:"recording"`
+}
+
+type EndpointStateChange struct {
+        Event
+        Endpoint *Endpoint `json:"endpoint"`
+}
+
 //
 // AsteriskInfo-related
 //
@@ -237,6 +257,14 @@ func parseMsg(raw []byte) (Eventer, error) {
 		msg = &StasisEnd{}
 	case "PeerStatusChange":
 		msg = &PeerStatusChange{}
+	case "RecordingFailed":
+    		msg = &RecordingFailed{}
+ 	case "RecordingFinished":
+    		msg = &RecordingFinished{}
+ 	case "RecordingStarted":
+    		msg = &RecordingStarted{}
+	case "EndpointStateChange":
+    		msg = &EndpointStateChange{}
 	default:
 		return &event, nil
 	}
